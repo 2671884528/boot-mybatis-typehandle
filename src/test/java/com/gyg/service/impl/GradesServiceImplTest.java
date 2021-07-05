@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -28,8 +30,8 @@ public class GradesServiceImplTest {
         Grades grades = new Grades();
         grades.setLid(1);
         grades.setTid(1);
-        grades.setUid(3);
-        grades.setScore(58.5);
+        grades.setUid(8);
+        grades.setScore(87.4);
         grades.setPass(true);
         try {
             gradesService.insertOne(grades);
@@ -56,6 +58,16 @@ public class GradesServiceImplTest {
         Grades grades = gradesService.selectOne(1);
         if (grades!=null) {
             System.out.println(grades.toString());
+        }
+    }
+
+    @Test
+    public void selectByScore(){
+        List<Grades> gradesList = gradesService.selectByScore(60);
+        if (gradesList!=null) {
+            gradesList.forEach((e)->{
+                System.out.println(e.toString());
+            });
         }
     }
 }

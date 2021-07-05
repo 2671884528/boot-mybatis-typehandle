@@ -5,6 +5,8 @@ import com.gyg.entity.Grades;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @Classname GradesMapper
  * @Date 2021/7/5 0:32
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Repository;
  * @Description TODO
  */
 @Repository
+//@Mapper
 public interface GradesMapper {
     /**
      * XXX
@@ -22,4 +25,6 @@ public interface GradesMapper {
     void insertOne(Grades grades);
     void insertOne2(Grade grade);
     Grades selectOne(Integer id);
+
+    List<Grades> selectByScore(double score);
 }

@@ -7,6 +7,8 @@ import com.gyg.service.GradesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Classname GradesServiceImpl
  * @Date 2021/7/5 1:47
@@ -31,5 +33,10 @@ public class GradesServiceImpl implements GradesService {
     @Override
     public Grades selectOne(Integer id) {
         return gradesMapper.selectOne(id);
+    }
+
+    @Override
+    public List<Grades> selectByScore(double score) {
+        return gradesMapper.selectByScore(score);
     }
 }
