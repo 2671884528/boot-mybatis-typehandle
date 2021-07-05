@@ -51,16 +51,16 @@ public class BooleanToTinyintTypeHandle implements TypeHandler<Boolean> {
      */
     @Override
     public Boolean getResult(ResultSet rs, String columnName) throws SQLException {
-        return rs.getInt(columnName) == 0;
+        return rs.getInt(columnName)==1;
     }
 
     @Override
     public Boolean getResult(ResultSet rs, int columnIndex) throws SQLException {
-        return rs.getInt(columnIndex) == 0;
+        return rs.getInt(columnIndex) == 1;
     }
 
     @Override
     public Boolean getResult(CallableStatement cs, int columnIndex) throws SQLException {
-        return cs.getInt(columnIndex) == 0;
+        return cs.getInt(columnIndex) == 1;
     }
 }

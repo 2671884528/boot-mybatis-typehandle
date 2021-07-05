@@ -24,10 +24,12 @@
                 typeHandler="com.gyg.config.mybatis.BooleanToTinyintTypeHandle"/>
     </resultMap>
 
+    <!--  在mybatis中，需要处理  <,或者<= 符号，因为mybatis会把它当作一个标签
+    当我们用 >或者 >= 时，我们不必要用转义，可以直接用。  -->
     <select id="selectByScore" parameterType="double" resultMap="map">
         select
         <include refid="gradesColumn"/>
-        from grades where score>#{score};
+        from grades where score > #{score};
     </select>
     <!--  注意这里我故意写成一样的，如果是不一样的，那么也用这种方法映射
       如果是一样的那么就不需要映射， 在这里是多此一举，最后一个不需要标点，
