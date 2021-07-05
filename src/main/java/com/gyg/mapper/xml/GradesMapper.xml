@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gyg.mapper.GradesMapper">
+    <insert id="insertOne" parameterType="grades">
+        INSERT INTO grades(uid, tid, lid,  score, pass)
+        VALUES (#{uid}, #{tid}, #{lid}, #{score}, #{pass,typeHandler=com.gyg.config.mybatis.BooleanToTinyintTypeHandle})
+    </insert>
+
+    <insert id="insertOne2" parameterType="grade">
+        INSERT INTO grades(uid, tid, lid, score, pass)
+        VALUES (#{uid}, #{tid}, #{lid}, #{score}, #{pass})
+    </insert>
+    <select id="selectOne" parameterType="int" resultMap="map">
+        select *
+        from grades
+        where id=#{id}
+    </select>
+
+    <resultMap id="map" type="grades">
+        <id column="id" property="id"/>
+        <result property="pass" column="pass" jdbcType="TINYINT" javaType="boolean" typeHandler="com.gyg.config.mybatis.BooleanToTinyintTypeHandle"/>
+    </resultMap>
+</mapper>
